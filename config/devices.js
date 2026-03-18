@@ -1,14 +1,17 @@
 import { resolve } from 'path';
 
 export const android_pixel_7 = {
-    platformName: 'Android',
+     platformName: 'Android',
+    'appium:automationName': 'UiAutomator2',
     'appium:deviceName': 'Medium Phone API 36.1',
     'appium:platformVersion': '16',
-    'appium:automationName': 'UiAutomator2',
-    'appium:app': resolve(__dirname, '../app/android/ApiDemos-debug.apk'),
+    'appium:app': './app/android/ApiDemos-debug.apk',
     'appium:autoGrantPermissions': true,
-    'appium:noReset': false
-};
+    'appium:newCommandTimeout': 120,
+    'appium:adbExecTimeout': 120000,
+    'appium:androidInstallTimeout': 120000,
+    'appium:uiautomator2ServerInstallTimeout': 120000
+  }
 export const ios_iphone_15 = {
     platformName: 'iOS',
     'appium:deviceName': 'iPhone 15',
