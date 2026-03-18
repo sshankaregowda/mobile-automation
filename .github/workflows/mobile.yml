@@ -1,0 +1,59 @@
+name: Mobile Automation
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+  pull_request:
+
+jobs:
+  mobile-tests:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - platform: android
+            device_key: android_pixel_7
+            runner: ubuntu-latest
+
+          - platform: ios
+            device_key: ios_iphone_15
+            runner: macos-latest
+
+    runs-on: ${{ matrix.runner }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Appium
+        run: npm install -g appium
+
+      - name: Install Appium drivers
+        run: |
+          appium driver install uiautomator2
+          appium driver install xcuitest
+
+      - name: Run Android tests
+        if: matrix.platform == 'android'
+        env:
+          DEVICE_KEY: ${{ matrix.device_key }}
+        run: |
+          echo "Start Android emulator or connect Android device here"
+          npm run test:mobile
+
+      - name: Run iOS tests
+        if: matrix.platform == 'ios'
+        env:
+          DEVICE_KEY: ${{ matrix.device_key }}
+        run: |
+          echo "Boot iOS simulator or connect iOS simulator/device here"
+          npm run test:mobile
