@@ -39,8 +39,8 @@ jobs:
 
       - name: Install Appium drivers
         run: |
-          appium driver install uiautomator2
-          appium driver install xcuitest
+          appium driver install uiautomator2@latest
+          appium driver install xcuitest@latest
 
       - name: Run Android tests
         if: matrix.platform == 'android'
