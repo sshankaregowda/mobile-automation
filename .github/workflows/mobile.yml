@@ -14,7 +14,7 @@ jobs:
         include:
           - platform: android
             device_key: android_pixel_7
-            runner: ubuntu-latest
+            runner: macos-latest
 
           - platform: ios
             device_key: ios_iphone_15
