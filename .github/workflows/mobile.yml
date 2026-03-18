@@ -41,13 +41,13 @@ jobs:
         if: matrix.platform == 'android'
         run: |
           appium driver uninstall uiautomator2 || true
-          appium driver install uiautomator2@latest
+          appium driver install uiautomator2@3.10.0
 
       - name: Setup Appium iOS driver
         if: matrix.platform == 'ios'
         run: |
           appium driver uninstall xcuitest || true
-          appium driver install xcuitest@latest
+          appium driver install xcuitest@7.32.0
 
       - name: Run Android tests
         if: matrix.platform == 'android'

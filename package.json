@@ -6,7 +6,8 @@
   "type":"module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "wdio": "wdio run ./wdio.conf.js"
+    "wdio": "wdio run ./wdio.conf.js",
+    "test:mobile": "wdio run wdio.conf.js"
   },
   "repository": {
     "type": "git",
