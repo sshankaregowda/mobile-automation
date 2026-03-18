@@ -72,10 +72,6 @@ jobs:
           script: |
             adb devices
             adb wait-for-device
-            while [ "$(adb shell getprop sys.boot_completed | tr -d '\r')" != "1" ]; do
-              echo "Waiting for Android emulator boot..."
-              sleep 5
-            done
             adb devices -l
             npm run test:mobile
 
