@@ -56,7 +56,7 @@ jobs:
           DEVICE_KEY: ${{ matrix.device_key }}
         with:
           api-level: 36
-          arch: x86_6
+          arch: x86_64
           profile: medium_phone
           emulator-options: -no-window -no-boot-anim -no-audio -no-snapshot-save
           script: |
