@@ -12,12 +12,12 @@ export const android_pixel_7 = {
     'appium:androidInstallTimeout': 120000,
     'appium:uiautomator2ServerInstallTimeout': 120000
   }
-export const ios_iphone_15 = {
+export const ios_iphone_17 = {
     platformName: 'iOS',
-    'appium:deviceName': 'iPhone 15',
-    'appium:platformVersion': '17.0',
+    'appium:deviceName': 'iPhone 17',
+    'appium:platformVersion': '26.3',
     'appium:automationName': 'XCUITest',
-    'appium:app': resolve(__dirname, '../apps/ios/'),
+    'appium:app': resolve(__dirname, '../app/ios/UIKitCatalog 2.app'),
     'appium:autoAcceptAlerts': true,
     'appium:noReset': false
 };
