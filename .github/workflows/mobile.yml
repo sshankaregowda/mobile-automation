@@ -51,16 +51,39 @@ jobs:
 
       - name: Run Android tests
         if: matrix.platform == 'android'
+        uses: ReactiveCircus/android-emulator-runner@v2
+        env:
+          DEVICE_KEY: ${{ matrix.device_key }}
+        with:
+          api-level: 36
+          arch: x86_64
+          profile: medium_phone
+          emulator-options: -no-window -no-boot-anim -no-audio -no-snapshot-save
+          script: |
+            adb devices
+            adb wait-for-device
+            while [[ "$(adb shell getprop sys.boot_completed | tr -d '\r')" != "1" ]]; do
+              echo "Waiting for Android emulator boot..."
+              sleep 5
+            done
+            adb devices -l
+            npm run test:mobile
+
+      - name: Show available simulators
+        if: matrix.platform == 'ios'
+        run: xcrun simctl list devices
+
+      - name: Boot iOS simulator
+        if: matrix.platform == 'ios'
         env:
           DEVICE_KEY: ${{ matrix.device_key }}
         run: |
-          echo "Start Android emulator or connect Android device here"
-          npm run test:mobile
+          xcrun simctl boot "iPhone 15" || true
+          xcrun simctl bootstatus "iPhone 15" -b
 
       - name: Run iOS tests
         if: matrix.platform == 'ios'
         env:
           DEVICE_KEY: ${{ matrix.device_key }}
         run: |
-          echo "Boot iOS simulator or connect iOS simulator/device here"
           npm run test:mobile

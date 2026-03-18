@@ -3,7 +3,7 @@ import { resolve } from 'path';
 export const android_pixel_7 = {
      platformName: 'Android',
     'appium:automationName': 'UiAutomator2',
-    'appium:deviceName': 'Medium Phone API 36.1',
+    'appium:deviceName': 'Medium Phone',
     'appium:platformVersion': '16',
     'appium:app': './app/android/ApiDemos-debug.apk',
     'appium:autoGrantPermissions': true,
