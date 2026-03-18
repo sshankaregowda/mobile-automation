@@ -37,10 +37,17 @@ jobs:
       - name: Install Appium
         run: npm install -g appium
 
-      - name: Install Appium drivers
+      - name: Setup Appium Android driver
+        if: matrix.platform == 'android'
         run: |
-          appium driver install uiautomator2@latest
-          appium driver install xcuitest@latest
+          appium driver list --installed
+          appium driver update uiautomator2 || appium driver install uiautomator2@latest
+
+      - name: Setup Appium iOS driver
+        if: matrix.platform == 'ios'
+        run: |
+          appium driver list --installed
+          appium driver update xcuitest || appium driver install xcuitest@latest
 
       - name: Run Android tests
         if: matrix.platform == 'android'
