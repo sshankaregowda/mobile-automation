@@ -35,7 +35,7 @@ jobs:
         run: npm ci
 
       - name: Install Appium
-        run: npm install -g appium
+        run: npm install -g appium@latest
 
       - name: Setup Appium Android driver
         if: matrix.platform == 'android'
