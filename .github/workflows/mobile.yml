@@ -79,12 +79,30 @@ jobs:
       - name: Start Appium for iOS
         if: matrix.platform == 'ios'
         run: |
-          ./node_modules/.bin/appium --base-path / --port 4723 --log-level debug > appium.log 2>&1 &
+          ./node_modules/.bin/appium -v
+          ./node_modules/.bin/appium driver list --installed || true
+
+          ./node_modules/.bin/appium \
+            --base-path / \
+            --port 4723 \
+            --log-level debug \
+            --log appium.log &
           APPIUM_PID=$!
-          sleep 15
+
+          echo "Appium PID: $APPIUM_PID"
+
+          for i in {1..30}; do
+            if curl -fsS http://127.0.0.1:4723/status > /dev/null; then
+              echo "Appium is up"
+              break
+           fi
+
+          echo "Waiting for Appium... attempt $i"
           ps -p $APPIUM_PID -f || true
-          cat appium.log || true
-          curl -f http://127.0.0.1:4723/status || (echo "Appium failed to start" && cat appium.log && exit 1)
+          sleep 2
+          done
+
+          curl -fsS http://127.0.0.1:4723/status || (echo "Appium failed to start" && cat appium.log && exit 1)
 
       - name: Run iOS tests
         if: matrix.platform == 'ios'
