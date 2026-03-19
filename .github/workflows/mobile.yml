@@ -73,6 +73,11 @@ jobs:
             adb devices
             adb wait-for-device
             adb devices -l
+
+            npx appium --base-path / --port 4723 > appium.log 2>&1 &
+            sleep 10
+            curl http://127.0.0.1:4723/status || (echo "Appium failed to start" && cat appium.log && exit 1)
+
             npm run test:mobile
 
       - name: Show available simulators
@@ -87,9 +92,22 @@ jobs:
           xcrun simctl boot "iPhone 17" || true
           xcrun simctl bootstatus "iPhone 17" -b
 
+      - name: Start Appium for iOS
+        if: matrix.platform == 'ios'
+        run: |
+          npx appium --base-path / --port 4723 > appium.log 2>&1 &
+          sleep 10
+          curl http://127.0.0.1:4723/status || (echo "Appium failed to start" && cat appium.log && exit 1)
+
       - name: Run iOS tests
         if: matrix.platform == 'ios'
         env:
           DEVICE_KEY: ${{ matrix.device_key }}
         run: |
           npm run test:mobile
+
+      - name: Show Appium logs on failure
+        if: failure()
+        run: |
+          echo "===== Appium log ====="
+          cat appium.log || true
