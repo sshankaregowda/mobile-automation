@@ -17,7 +17,7 @@ jobs:
             runner: ubuntu-latest
 
           - platform: ios
-            device_key: ios_iphone_17
+            device_key: ios_iphone_17_ci
             runner: macos-latest
 
     runs-on: ${{ matrix.runner }}

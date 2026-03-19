@@ -21,3 +21,13 @@ export const ios_iphone_17 = {
     'appium:autoAcceptAlerts': true,
     'appium:noReset': false
 };
+
+export const ios_iphone_17_ci = {
+    platformName: 'iOS',
+    'appium:deviceName': 'iPhone 17',
+    'appium:platformVersion': '26.2',
+    'appium:automationName': 'XCUITest',
+    'appium:app': resolve(__dirname, '../app/ios/UIKitCatalog 2.app'),
+    'appium:autoAcceptAlerts': true,
+    'appium:noReset': false
+  }
