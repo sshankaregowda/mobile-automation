@@ -68,14 +68,6 @@ jobs:
         if: matrix.platform == 'ios'
         run: xcrun simctl list devices
 
-      - name: Boot iOS simulator
-        if: matrix.platform == 'ios'
-        env:
-          DEVICE_KEY: ${{ matrix.device_key }}
-        run: |
-          xcrun simctl boot "iPhone 17" || true
-          xcrun simctl bootstatus "iPhone 17" -b
-
       - name: Start Appium for iOS
         if: matrix.platform == 'ios'
         run: |
