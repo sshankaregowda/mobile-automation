@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "type":"module",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "wdio": "wdio run ./wdio.conf.js",
@@ -27,9 +27,9 @@
     "@wdio/mocha-framework": "^9.26.1",
     "@wdio/spec-reporter": "^9.26.1",
     "@wdio/visual-service": "^9.2.0",
-    "appium": "^2.19.0",
+    "appium": "^3.2.2",
     "appium-uiautomator2-driver": "^3.10.0",
-    "appium-xcuitest-driver": "^7.32.0",
+    "appium-xcuitest-driver": "^10.32.1",
     "webdriverio": "^9.26.1"
   }
 }

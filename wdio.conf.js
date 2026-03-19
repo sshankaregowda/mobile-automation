@@ -26,9 +26,15 @@ export const config = {
     timeout: 120000
   },
 
-  services: [
-    ['appium', {
-      command: 'appium'
-    }]
-  ]
+  services: [[
+  'appium',
+  {
+    command: './node_modules/.bin/appium',
+    args: {
+      basePath: '/',
+      port: 4723,
+      logLevel: 'debug'
+    }
+  }
+]]
 };

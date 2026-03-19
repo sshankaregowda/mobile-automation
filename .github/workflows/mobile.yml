@@ -47,7 +47,7 @@ jobs:
         if: matrix.platform == 'ios'
         run: |
           appium driver uninstall xcuitest || true
-          appium driver install xcuitest@10
+          appium driver install xcuitest@10.32.1
 
       - name: Enable KVM access
         if: matrix.platform == 'android'
