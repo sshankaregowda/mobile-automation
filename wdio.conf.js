@@ -24,17 +24,17 @@ export const config = {
   mochaOpts: {
     ui: 'bdd',
     timeout: 120000
-  },
-
-  services: [[
-  'appium',
-  {
-    command: './node_modules/.bin/appium',
-    args: {
-      basePath: '/',
-      port: 4723,
-      logLevel: 'debug'
-    }
   }
-]]
+
+//   services: [[
+//   'appium',
+//   {
+//     command: './node_modules/.bin/appium',
+//     args: {
+//       basePath: '/',
+//       port: 4723,
+//       logLevel: 'debug'
+//     }
+//   }
+// ]]
 };
