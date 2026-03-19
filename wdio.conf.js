@@ -15,6 +15,9 @@ export const config = {
   port: 4723,
   path: '/',
 
+  connectionRetryTimeout: 420000,
+  connectionRetryCount: 1,
+
   capabilities: [devices[deviceKey]],
 
   logLevel: 'info',
