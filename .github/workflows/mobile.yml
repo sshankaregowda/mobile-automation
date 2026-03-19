@@ -17,7 +17,7 @@ jobs:
             runner: ubuntu-latest
 
           - platform: ios
-            device_key: ios_iphone_15
+            device_key: ios_iphone_17
             runner: macos-latest
 
     runs-on: ${{ matrix.runner }}
@@ -84,8 +84,8 @@ jobs:
         env:
           DEVICE_KEY: ${{ matrix.device_key }}
         run: |
-          xcrun simctl boot "iPhone 15" || true
-          xcrun simctl bootstatus "iPhone 15" -b
+          xcrun simctl boot "iPhone 17" || true
+          xcrun simctl bootstatus "iPhone 17" -b
 
       - name: Run iOS tests
         if: matrix.platform == 'ios'
