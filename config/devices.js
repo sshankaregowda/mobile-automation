@@ -31,5 +31,10 @@ export const ios_iphone_17_ci = {
     'appium:autoAcceptAlerts': true,
     'appium:noReset': false,
     'appium:isHeadless': true,
-    'appium:simulatorStartupTimeout': 300000
+    'appium:simulatorStartupTimeout': 300000,
+    'appium:wdaLaunchTimeout': 300000,
+    'appium:wdaConnectionTimeout': 300000,
+    'appium:wdaStartupRetries': 4,
+    'appium:wdaStartupRetryInterval': 20000,
+    'appium:showXcodeLog': true
   }
