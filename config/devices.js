@@ -29,5 +29,7 @@ export const ios_iphone_17_ci = {
     'appium:automationName': 'XCUITest',
     'appium:app': resolve(__dirname, '../app/ios/UIKitCatalog 2.app'),
     'appium:autoAcceptAlerts': true,
-    'appium:noReset': false
+    'appium:noReset': false,
+    'appium:isHeadless': true,
+    'appium:simulatorStartupTimeout': 300000
   }
