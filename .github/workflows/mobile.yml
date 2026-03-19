@@ -34,21 +34,6 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Install Appium
-        run: npm install -g appium@latest
-
-      - name: Setup Appium Android driver
-        if: matrix.platform == 'android'
-        run: |
-          appium driver uninstall uiautomator2 || true
-          appium driver install uiautomator2@3.10.0
-
-      - name: Setup Appium iOS driver
-        if: matrix.platform == 'ios'
-        run: |
-          appium driver uninstall xcuitest || true
-          appium driver install xcuitest@10.32.1
-
       - name: Enable KVM access
         if: matrix.platform == 'android'
         run: |
@@ -94,7 +79,7 @@ jobs:
 
       - name: Start Appium for iOS
         if: matrix.platform == 'ios'
-        script: |
+        run: |
           appium --base-path / --port 4723 > appium.log 2>&1 &
           sleep 10
           curl http://127.0.0.1:4723/status || (echo "Appium failed to start" && cat appium.log && exit 1)
