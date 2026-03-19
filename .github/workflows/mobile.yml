@@ -94,7 +94,7 @@ jobs:
 
       - name: Start Appium for iOS
         if: matrix.platform == 'ios'
-        run: |
+        script: |
           appium --base-path / --port 4723 > appium.log 2>&1 &
           sleep 10
           curl http://127.0.0.1:4723/status || (echo "Appium failed to start" && cat appium.log && exit 1)
